@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+    --*: initial;
+    --font-body: Inter, sans-serif;
+    --color-primary: #0EC772;
+    --color-secondary: #1d252d;
+    --color-dark-green: #009d85;
+  }
