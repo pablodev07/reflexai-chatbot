@@ -14,7 +14,8 @@ export default {
         primary: "#0EC772",
         secondary: "#1d252d",
         darkgreen: "#009d85",
-        dark: "#1d252d"
+        dark: "#1d252d",
+        smoothgray: "#f0f2f6"
       }
     },
   },
