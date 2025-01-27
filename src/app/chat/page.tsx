@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState, useEffect} from "react";
+import { useRef, useState, useEffect } from "react";
 import { GoHome, GoPerson, GoBell } from "react-icons/go";
 import { VscSend } from "react-icons/vsc";
 
@@ -12,7 +12,7 @@ export default function ChatDashboard() {
   const conversationContainerRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   useEffect(() => {
-    if (conversationContainerRef.current){
+    if (conversationContainerRef.current) {
       conversationContainerRef.current.scrollTop = conversationContainerRef.current.scrollHeight;
     }
   }, [messages])
@@ -32,18 +32,18 @@ export default function ChatDashboard() {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     //Accepting 'Enter' to send chat
-    if (e.key === 'Enter' && !e.shiftKey){
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
     }
   }
 
   const handleSubmit = () => {
-    if(userInput.trim() === '') return; //to ignore empty messages
+    if (userInput.trim() === '') return; //to ignore empty messages
 
     setMessages([
       ...messages,
-      {sender: 'user', text: userInput}
+      { sender: 'user', text: userInput }
     ]);
     setMessageLoading(true)
 
@@ -66,17 +66,21 @@ export default function ChatDashboard() {
   return (
     <main className="chatContainer flex flex-col lg:flex-row h-screen">
       <nav className="border-r-2 border-solid border-gray-200 w-full lg:w-[10%]">
-        <div className="admIcons flex flex-row lg:flex-col pt-5 pb-5 lg:pb-0">
+        <div className="admIcons flex flex-row lg:flex-col pt-3 pb-3 lg:pb-0">
           <a className="mx-auto p-5" href="/"><button>
             <GoHome className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Go to Home" />
           </button>
           </a>
-          <button className="mx-auto p-5">
-            <GoPerson className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="User settings" />
-          </button>
-          <button className="mx-auto p-5">
-            <GoBell className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Notifications" />
-          </button>
+          <a className="mx-auto p-5" href="/admin">
+            <button>
+              <GoPerson className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Admin Panel" />
+            </button>
+          </a>
+          <a className="mx-auto p-5" href="/">
+            <button>
+              <GoBell className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Notifications" />
+            </button>
+          </a>
         </div>
 
       </nav>
@@ -99,7 +103,7 @@ export default function ChatDashboard() {
           )}
         </div>
         <div className="inputContainer sticky bottom-0 mt-4 mx-5 mb-5">
-          <textarea ref={textAreaRef} value={userInput} onChange={(e)=> setUserInput(e.target.value)} onKeyDown={handleKeyDown} className="chatInput w-full rounded-[24px] min-h-[100px] p-5 border-2 border-gray-200 outline-primary overflow-y-auto resize-none" placeholder="Enter your message" />
+          <textarea ref={textAreaRef} value={userInput} onChange={(e) => setUserInput(e.target.value)} onKeyDown={handleKeyDown} className="chatInput w-full rounded-[24px] min-h-[100px] p-5 border-2 border-gray-200 outline-primary overflow-y-auto resize-none" placeholder="Enter your message" />
           <button type="submit" aria-label="Submit your message" className="absolute bottom-0 rounded-[24px] right-0 py-[0.575rem] lg:py-[0.875rem] px-[1.5625rem] h-[50px] mb-5 mr-4 bg-primary font-bold text-white" onClick={handleSubmit}><VscSend className="w-[25px] h-[25px]" /></button>
         </div>
       </section>
