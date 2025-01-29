@@ -8,13 +8,6 @@
   --foreground: #171717;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -50,4 +43,11 @@ animation-delay: 0.2s
   margin-right: auto;
   background-color: white;
   color: #1d252d;
+}
+
+.message-system {
+  background-color: #f9e547;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-weight: bold;
 }
