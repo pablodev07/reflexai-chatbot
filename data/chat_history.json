@@ -1,1 +1,24 @@
-[]
+[
+  [
+    {
+      "sender": "user",
+      "text": "hi",
+      "timestamp": "2025-01-29T01:14:39.022Z"
+    },
+    {
+      "sender": "bot",
+      "text": "Hello! I am here to help you. What's troubling you today?",
+      "timestamp": "2025-01-29T01:14:39.729Z"
+    },
+    {
+      "sender": "user",
+      "text": "not feeling great",
+      "timestamp": "2025-01-29T01:14:43.131Z"
+    },
+    {
+      "sender": "bot",
+      "text": "Oh I see. And then what happened?",
+      "timestamp": "2025-01-29T01:14:43.843Z"
+    }
+  ]
+]
