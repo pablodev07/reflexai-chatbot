@@ -64,7 +64,7 @@ function ChatDashboard() {
       })
 
       setMessageLoading(false);
-    }, 1500); // Adjust delay as needed
+    }, 1500);
 
     setUserInput('');
   };
@@ -146,7 +146,7 @@ function ChatDashboard() {
         </div>
         <div ref={conversationContainerRef} className="conversationContainer flex flex-1 flex-col gap-5 h-full overflow-y-auto p-5">
           {messages.map((message, index) => (
-            <div key={index} className={`rounded-[24px] h-fit p-5 message-${message.sender}`}>
+            <div key={index} data-testid="message-container" className={` rounded-[24px] h-fit p-5 message-${message.sender}`}>
               <p>{message.text}</p>
             </div>
           ))}
@@ -161,8 +161,8 @@ function ChatDashboard() {
           )}
         </div>
         <div className="inputContainer sticky bottom-0 mt-4 mx-5 mb-5">
-          <textarea value={userInput} onChange={(e) => setUserInput(e.target.value)} onKeyDown={handleKeyDown} className="chatInput w-full rounded-[24px] min-h-[100px] p-5 border-2 border-gray-200 outline-primary overflow-y-auto resize-none" placeholder="Enter your message..." aria-label="Enter your message here." />
-          <button type="submit" disabled={messageLoading} aria-label="Submit your message" className="absolute bottom-0 rounded-[24px] right-0 py-[0.575rem] lg:py-[0.875rem] px-[1.5625rem] h-[50px] mb-5 mr-4 bg-primary font-bold text-white disabled:bg-smoothgray disabled:border-primary disabled:border-2 disabled:text-gray-500" onClick={handleSubmit}><VscSend className="w-[25px] h-[25px]" /></button>
+          <textarea data-testid="user-input" value={userInput} onChange={(e) => setUserInput(e.target.value)} onKeyDown={handleKeyDown} className="chatInput w-full rounded-[24px] min-h-[100px] p-5 border-2 border-gray-200 outline-primary overflow-y-auto resize-none" placeholder="Enter your message...." aria-label="Enter your message here." />
+          <button data-testid="send-msg" type="submit" disabled={messageLoading} aria-label="Submit your message" className="absolute bottom-0 rounded-[24px] right-0 py-[0.575rem] lg:py-[0.875rem] px-[1.5625rem] h-[50px] mb-5 mr-4 bg-primary font-bold text-white disabled:bg-smoothgray disabled:border-primary disabled:border-2 disabled:text-gray-500" onClick={handleSubmit}><VscSend className="w-[25px] h-[25px]" /></button>
         </div>
       </section>
     </main>
