@@ -1,0 +1,53 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.nowTypingMessage{
+  animation: typing-animation 2s infinite;
+}
+
+.nowTypingMessage span:nth-child(2){
+animation-delay: 0.2s
+}
+
+.nowTypingMessage span:nth-child(3){
+  animation-delay: 1s
+}
+
+@keyframes typing-animation{
+  0% {opacity: 0.2;}
+  25% {opacity: 1;}
+  50% {opacity: 0.2; }
+  80% {opacity: 0.4;}
+  100% {opacity: 1;}
+}
+  
+.message-bot{
+ margin-left: auto;
+ background-color: #1d252d;
+ color: white;
+}
+
+.message-user{
+  margin-right: auto;
+  background-color: white;
+  color: #1d252d;
+}
+
+.message-system {
+  background-color: #f9e547;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-weight: bold;
+}

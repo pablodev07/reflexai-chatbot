@@ -11,7 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-      },
+        primary: "#0EC772",
+        secondary: "#1d252d",
+        tertiary: "#f9e547",
+        darkgreen: "#009d85",
+        dark: "#1d252d",
+        smoothgray: "#f0f2f6"
+      }
     },
   },
   plugins: [],
