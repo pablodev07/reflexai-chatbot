@@ -16,21 +16,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About the project
 
-## Learn More
+This is an exercise I did for the position of front end developer at ReflexAI. 
+The idea was to create a small webapp that would simulate chatting with a bot (which has four hardcoded answers). Then, you would access an admin panel where you could see the logged conversations.
 
-To learn more about Next.js, take a look at the following resources:
+## How does it work?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There's a deployed version on Vercel for you to play around with it.
+- For chat, just go to /chat and start writing your message. Press enter or hit the 'Submit' button. You can type as many messages as you like, the bot will respond with up to 4 different messages and start all over again. Whenever you want to stop, hit the 'Close and save chat' button at the top of the chat. It will save the conversation you just had. The conversation will start over again.
+- To see the chat logs, go to /admin. They will be displayed in cards, including a unformatted timestamp.
+- This a responsive and accessible (as much as possible) webapp.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
