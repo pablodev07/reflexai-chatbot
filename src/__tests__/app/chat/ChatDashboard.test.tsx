@@ -1,23 +1,42 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, act } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import ChatDashboard from "@/app/chat/page";
 
 
+jest.useFakeTimers();
+
 describe("ChatDashboard", () => {
-    test("should display a bot response after an user sends a message", async ()=> {
-        render(<ChatDashboard/>)
+  afterEach(() => {
+    jest.useRealTimers();
+  });
 
-        const input = screen.getByTestId("user-input");
-        userEvent.type(input, "Hello");
-        userEvent.click(screen.getByTestId("send-msg"));
+  test("should display a bot response after an user sends a message", async () => {
+    render(<ChatDashboard />);
 
-        await waitFor(() => 
-            screen.findByText("Hello! I am here to help you. What's troubling you today?"),
-            { timeout: 5000}
-        )
-        const messages = screen.getAllByTestId("message-container");
-        expect(messages).toHaveLength(2);
-        expect(messages[1].textContent).toBe("Hello! I am here to help you. What's troubling you today?")
-    })
-})
+    const input = screen.getByTestId("user-input");
+
+    await act(async () => {
+      userEvent.type(input, "Hello");
+      userEvent.click(screen.getByTestId("send-msg"));
+    });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    await waitFor(() => {
+        console.log(screen.debug());
+      expect(
+        screen.getByText("Hello! I am here to help you. What's troubling you today?")
+      ).toBeInTheDocument();
+    });
+
+    const messages = screen.getAllByTestId("message-container");
+    expect(messages).toHaveLength(2);
+    expect(messages[1].textContent).toBe(
+      "Hello! I am here to help you. What's troubling you today?"
+    );
+  });
+});

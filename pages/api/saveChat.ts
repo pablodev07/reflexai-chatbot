@@ -2,20 +2,27 @@ import { promises as fs } from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path'
 
+type Conversation = {
+  sender: string;
+  text: string;
+  timestamp: string;
+};
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {if (req.method !== 'POST') {
     return res.status(405).end();
   }
   
   try {
-    const newConversation: any[] = req.body;
+    const newConversation: Conversation[] = req.body;
     const filePath = path.join(process.cwd(), 'data', 'chat_history.json');
   
-    let existingChatHistory: any[][] = [];
+    let existingChatHistory: Conversation[][] = [];
     try {
       const existingData = await fs.readFile(filePath, 'utf-8');
       existingChatHistory = JSON.parse(existingData);
     } catch (error) {
-      if ((error as any).code === 'ENOENT' || error instanceof SyntaxError) {
+      if (error instanceof Error && (error as NodeJS.ErrnoException).code === 'ENOENT') {
         existingChatHistory = [];
       } else {
         console.error('Error reading chat history:', error);
