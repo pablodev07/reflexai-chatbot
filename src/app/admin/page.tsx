@@ -1,9 +1,21 @@
 'use client'
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { GoHome, GoBell, GoAlertFill, GoComment, GoCommentDiscussion } from "react-icons/go";
 
+type Message = {
+    sender: string;
+    text: string;
+    timestamp: string;
+  };
+  
+  type Conversation = {
+    [key: string]: Message;
+  };
+
+
 export default function AdminPanel() {
-    const [chatLogs, setChatLogs] = useState<any[]>([]);
+    const [chatLogs, setChatLogs] = useState<Conversation[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -35,15 +47,15 @@ export default function AdminPanel() {
         <main className="chatContainer flex flex-col lg:flex-row h-screen">
           <nav className="border-r-2 border-solid border-gray-200 w-full lg:w-[10%]">
             <div className="admIcons flex flex-row lg:flex-col pt-3 pb-3 lg:pb-0">
-              <a className="mx-auto p-5" href="/"><button>
+              <Link className="mx-auto p-5" href="/"><button>
                 <GoHome className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Go to Home" />
               </button>
-              </a>
-              <a className="mx-auto p-5" href="/chat">
+              </Link>
+              <Link className="mx-auto p-5" href="/chat">
                 <button>
                   <GoComment className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Go to Chat" />
                 </button>
-              </a>
+              </Link>
                 <button className="mx-auto p-5">
                   <GoBell className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Notifications" />
                 </button>

@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { VscSend } from "react-icons/vsc";
 import { GoHome, GoTable, GoBell } from "react-icons/go";
+import Link from "next/link";
 
 interface Message {
   sender: string;
@@ -90,8 +91,6 @@ function ChatDashboard() {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-      const data = await response.json();
-      console.log(data.message);
     } catch (error) {
       console.error('Error saving chat history:', error);
     }
@@ -123,15 +122,15 @@ function ChatDashboard() {
     <main className="chatContainer flex flex-col lg:flex-row h-screen">
       <nav className="border-r-2 border-solid border-gray-200 w-full lg:w-[10%]">
         <div className="admIcons flex flex-row lg:flex-col pt-3 pb-3 lg:pb-0">
-          <a className="mx-auto p-5" href="/"><button>
+          <Link className="mx-auto p-5" href="/"><button>
             <GoHome className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Go to Home" />
           </button>
-          </a>
-          <a className="mx-auto p-5" href="/admin">
+          </Link>
+          <Link className="mx-auto p-5" href="/admin">
             <button>
               <GoTable className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Admin Panel" />
             </button>
-          </a>
+          </Link>
             <button className="mx-auto p-5">
               <GoBell className="w-auto h-[30px] text-dark hover:text-darkgreen" aria-label="Notifications" />
             </button>
